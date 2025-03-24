@@ -103,6 +103,30 @@ public class GuessingGame {
 
     }
     private static void playHighLow(int rnum){
+        int userGuess;
+        int userGuessCount = 0; //how many times guessed
+        boolean playing = true;
+        String msg = "";
+        String HighLowMenu = "Your Guess? (0=quit): ";
+//        userGuess = UserInput.getInt(HighLowMenu, 0, 100);
+        do {
+            userGuess = UserInput.getInt(HighLowMenu, 0, 100);
+            userGuessCount++;
+            if (userGuess > rnum) {
+                System.out.println("too high");
+//                userGuess = UserInput.getInt(HighLowMenu, 0, 100);
+            } else if (userGuess == 0){
+                playing = false;
+                System.out.println("Sorry, you did not guess my number: " + rnum + " in " + --userGuessCount + " tries.");
+
+            } else if (userGuess < rnum) {
+                System.out.println("too low");
+//                userGuess = UserInput.getInt(HighLowMenu, 0, 100);
+            } else {
+                System.out.println("You guessed my number in " + userGuessCount + " tries!");
+                playing = false;
+            }
+        } while (playing);
 
     }
 }
